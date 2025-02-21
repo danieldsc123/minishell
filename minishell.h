@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 15:16:26 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 15:19:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:25:56 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@
 
 struct s_token
 {
+	static s_token	*next;
+	static s_token	*prev;
 };
