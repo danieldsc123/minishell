@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/21 15:06:45 by danielda          #+#    #+#              #
-#    Updated: 2025/02/21 15:07:36 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/21 15:44:36 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 
+# Diretórios da Libft                                                                                    
+LIBFT_DIR = ./library/libft
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_INC = $(LIBFT_DIR)/include
+
 # Compila arquivos objeto
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+	$(CC) $(CFLAGS) $(LIBFT) -I$(INCDIR) -c $< -o $@
 
 # Cria o diretório de objetos se não existir
 $(OBJDIR):
