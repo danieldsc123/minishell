@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:08:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 16:37:49 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:45:00 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ t_token	*allocate_token(t_token **tokens, char *input, int start, int end)
 
 	new_token = malloc(sizeof(t_token));
 	if (!new_token)
+	{
+		free(new_token)
 		return (NULL);
+	}
 	new_token->value = ft_strndup(input + start, end - start);
 	if (!new_token->value)
 	{
