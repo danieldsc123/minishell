@@ -6,11 +6,9 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 14:51:28 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:12:18 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "tokens.h"
 
 t_token	*lexer(char *input)
 {
