@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 17:03:38 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:12:58 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,3 @@ t_token	*lexer(char *input) //Função principal que processa a entrada e retorn
 	}
 	return (head);
 }
-
-get_operator()
-get_word()
