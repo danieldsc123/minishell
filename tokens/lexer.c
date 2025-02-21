@@ -6,13 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 16:48:53 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/21 17:03:38 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
 
-t_token	*lexer(char *input)
+t_token	*lexer(char *input) //Função principal que processa a entrada e retorna uma lista encadeada de tokens.
 {
 	t_token	*token;
 	t_token	*head;
@@ -35,3 +35,6 @@ t_token	*lexer(char *input)
 	}
 	return (head);
 }
+
+get_operator()
+get_word()
