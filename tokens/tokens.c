@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:08:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 17:33:33 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:56:30 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_token	*allocate_token(t_token **tokens, char *input, int start, int end) //Cri
 			current = current->next;
 		current->next = new_token;
 	}
-	// free(new_token);
 	return (new_token);
 }
 

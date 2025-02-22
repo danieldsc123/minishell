@@ -6,9 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/21 17:49:07 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:57:21 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 void set_operator_type(t_token **tokens) //Ajusta o tipo de operadores (| vira PIPE, < vira REDIR_IN, etc.).
 {
