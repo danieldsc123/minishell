@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/14 14:45:52 by danielda          #+#    #+#             */
+/*   Updated: 2024/10/14 15:42:13 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-t_token	*lexer(char *input)
+int	ft_isdigit(int i)
 {
-	t_token	*head;
-	int		i;
-
-	i = 0;
-	head = NULL;
-	while (input[i])
-	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
-	}
-	return (head);
+	if (i >= 48 && i <= 57)
+		return (1);
+	else
+		return (0);
 }

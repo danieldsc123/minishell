@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/24 18:44:30 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:36:35 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_token	*head;
-	int		i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	i = 0;
-	head = NULL;
-	while (input[i])
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (dest == src || n == 0)
+		return (dest);
+	if (d < s)
+		while (n --)
+			*d++ = *s++;
+	else
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		d += n;
+		s += n;
+		while (n--)
+			*(--d) = *(--s);
 	}
-	return (head);
+	return (dest);
 }

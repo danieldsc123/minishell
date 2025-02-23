@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/29 18:51:49 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:37:59 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_token	*head;
-	int		i;
-
-	i = 0;
-	head = NULL;
-	while (input[i])
+	if (n == -2147483648)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (head);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n ;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd (n / 10, fd);
+	}
+	ft_putchar_fd ((n % 10) + '0', fd);
 }

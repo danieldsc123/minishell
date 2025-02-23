@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2025/02/13 01:31:36 by danielda          #+#    #+#             */
+/*   Updated: 2025/02/13 01:32:49 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+int	ft_strcmp(char *s1, char *s2)
 {
-	t_token	*head;
-	int		i;
-
-	i = 0;
-	head = NULL;
-	while (input[i])
+	while (*s1 && *s2)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-	return (head);
+	return (*s1 - *s2);
 }

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/18 20:33:13 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:39:40 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_token	*head;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	head = NULL;
-	while (input[i])
-	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
-	}
-	return (head);
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

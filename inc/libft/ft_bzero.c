@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/23 20:15:34 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:34:37 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+void	ft_bzero(void *s, size_t n)
 {
-	t_token	*head;
-	int		i;
+	size_t			i;
+	unsigned char	*l;
 
+	l = (unsigned char *)s;
 	i = 0;
-	head = NULL;
-	while (input[i])
+	while (i < n)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		*(l + i) = 0;
+		i++;
 	}
-	return (head);
 }

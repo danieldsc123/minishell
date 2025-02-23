@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/27 20:37:30 by danielda          #+#    #+#             */
+/*   Updated: 2025/02/10 18:03:26 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+char	*ft_strdup(const char *s)
 {
-	t_token	*head;
-	int		i;
+	char		*copy;
+	int			i;
+	int			dest;
 
 	i = 0;
-	head = NULL;
-	while (input[i])
+	dest = 0;
+	while (s[dest] != '\0')
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		dest++;
 	}
-	return (head);
+	copy = (char *)malloc((dest + 1) * sizeof(char));
+	if (!copy)
+	{
+		return (NULL);
+	}
+	while (i < dest)
+	{
+		copy[i] = s[i];
+		i++;
+	}
+	copy[i] = '\0';
+	return (copy);
 }

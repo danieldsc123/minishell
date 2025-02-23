@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/24 15:46:26 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:36:23 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_token	*head;
-	int		i;
+	unsigned char			*d;
+	const unsigned char		*s;
 
-	i = 0;
-	head = NULL;
-	while (input[i])
+	if (!dest && !src)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		return (NULL);
 	}
-	return (head);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	while (n--)
+	{
+		*d++ = *s++;
+	}
+	return (dest);
 }

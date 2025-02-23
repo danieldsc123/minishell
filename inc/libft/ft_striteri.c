@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/22 22:40:52 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:39:00 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
-t_token	*lexer(char *input)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	t_token	*head;
-	int		i;
+	unsigned int	i;
 
+	if (!s)
+		return ;
 	i = 0;
-	head = NULL;
-	while (input[i])
+	while (s[i])
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		f(i, &s[i]);
+		++i;
 	}
-	return (head);
 }

@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2025/02/22 21:38:03 by danielda          #+#    #+#             */
+/*   Updated: 2025/02/22 21:42:11 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
+#include <stdlib.h>
+#include <string.h>
 
-t_token	*lexer(char *input)
+char	*ft_strndup(const char *s, size_t n)
 {
-	t_token	*head;
-	int		i;
+	char	*dup;
 
-	i = 0;
-	head = NULL;
-	while (input[i])
+	dup = (char *)malloc(n + 1);
+	if (!dup)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		free(dup);
+		return (NULL);
 	}
-	return (head);
+	memcpy(dup, s, n);
+	dup[n] = '\0';
+	return (dup);
 }

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/22 22:41:19 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:40:30 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_token	*head;
-	int		i;
+	char			*str;
+	unsigned int	i;
 
+	if (!s || !f)
+		return (NULL);
+	str = malloc((ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	head = NULL;
-	while (input[i])
+	while (s[i])
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (head);
+	str[i] = '\0';
+	return (str);
 }

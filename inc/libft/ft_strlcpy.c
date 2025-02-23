@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:21:05 by danielda         ###   ########.fr       */
+/*   Created: 2024/10/15 19:44:07 by danielda          #+#    #+#             */
+/*   Updated: 2024/11/05 20:39:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_token	*lexer(char *input)
+int	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_token	*head;
-	int		i;
+	size_t	i;
+	size_t	src_len;
 
 	i = 0;
-	head = NULL;
-	while (input[i])
+	src_len = 0;
+	src_len = ft_strlen(src);
+	if (!size)
+		return (src_len);
+	while (src[i] != '\0' && i < size - 1)
 	{
-		if (input[i] == ' ' || input[i] == '\t')
-		{
-			i++;
-			continue ;
-		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
-			get_operator(input, &head, &i);
-		else
-			get_word(input, &head, &i);
+		dst[i] = src[i];
+		i++;
 	}
-	return (head);
+	if (size > 0)
+		dst[i] = '\0';
+	return (src_len);
 }

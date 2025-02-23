@@ -6,20 +6,20 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:08:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 18:56:30 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/22 21:47:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <string.h> // Para strndup
-#include <stdlib.h> // Para malloc e free
+// #include <string.h> // Para strndup
+// #include <stdlib.h> // Para malloc e free
 
 t_token	*allocate_token(t_token **tokens, char *input, int start, int end) //Cria e adiciona um novo token à lista encadeada.
 {
 	t_token	*new_token;
 	t_token	*current;
 
-	new_token = ft_calloc(sizeof(t_token));
+	new_token = ft_calloc(1, sizeof(t_token));
 	if (!new_token)
 		return (NULL);
 	new_token->value = ft_strndup(input + start, end - start);
@@ -56,12 +56,12 @@ void	free_tokens(t_token *tokens) //Libera a memória de todos os tokens da list
 
 void	print_tokens(t_token *tokens) // opcional para debug
 {
-	if (tokens == NULL)
+	if (!tokens)
 		return ;
 	printf("Tokens:\n");
-	while (tokens != NULL)
+	while (tokens)
 	{
-		printf("%s\n", tokens->value);
+		printf("[%d] %s\n", tokens->type, tokens->value);
 		tokens = tokens->next;
 	}
 }
