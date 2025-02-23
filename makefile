@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/02/23 15:21:51 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/23 17:24:59 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -I./inc
 
 # Diretórios e arquivos
-SRCS = main.c tokens/lexer.c tokens/tokenizer.c tokens/tokens.c tokens/token_utils.c
+SRCS = main.c tokens/lexer.c tokens/tokenizer.c tokens/tokens.c tokens/token_utils.c tokens/syntax_error.c tokens/verify_error.c
 OBJS = $(SRCS:.c=.o)
 
 # Bibliotecas externas (caso tenha libft)

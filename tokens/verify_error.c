@@ -1,0 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   verify_error.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/23 16:26:12 by danielda          #+#    #+#             */
+/*   Updated: 2025/02/23 18:38:02 by danielda         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+//auxiliar da forbiden_tokens
+t_bool	check_forbidden(t_token *tokens, char *forbidden)
+{
+	if (!tokens)
+		return (FALSE);
+	while (tokens)
+	{
+		if (tokens->value && strcmp(tokens->value, forbidden) == 0)
+		{
+			printf("Erro de sintaxe: token proibido encontrado\n");
+			return (TRUE);
+		}
+		tokens = tokens->next;
+	}
+	return (FALSE);
+}
+
+// auxiliar da check_close_quotes
+t_bool	check_quote_balance(char quote)
+{
+	if (quote)
+	{
+		printf("Erro de sintaxe: aspas não fechadas corretamente\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
+
+// auxiliar da check_close_quotes
+t_bool	toggle_quote(char quote, char c)
+{
+	if (quote && quote == c)
+	{
+		return (0);
+	}
+	if (!quote)
+	{
+		return (c);
+	}
+	return (quote);
+}
+
+// Verifica se todas as aspas foram fechadas corretamente
+t_bool	check_close_quotes(char *input)
+{
+	int		i;
+	char	quote;
+
+	i = 0;
+	quote = 0;
+	while (input[i])
+	{
+		if (input[i] == '"' || input[i] == '\'')
+		{
+			quote = toggle_quote(quote, input[i]);
+		}
+		i++;
+	}
+	return (check_quote_balance(quote));
+}
+
+// Função geral que chama todas as verificações
+t_bool	check_syntax_errors(t_token *tokens, char *input)
+{
+	if (check_start_pipe(tokens) || check_op_op(tokens)
+		|| check_end_op(tokens) || forbiden_token(tokens)
+		|| check_close_quotes(input))
+		return (TRUE);
+	return (FALSE);
+}
