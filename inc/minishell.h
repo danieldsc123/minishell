@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:00:03 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 22:38:00 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:07:21 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_token	*allocate_token(t_token **tokens, char *input, int start, int end);
 void	free_tokens(t_token *tokens);
 void	print_tokens(t_token *tokens); // Apenas para debug
 void	set_operator_type(t_token **tokens);
+void	set_token_redir_type(t_token *current, char *value, char type);
 void	set_redir_type(t_token *tokens, char type);
 t_token	*add_token(t_token **tokens, t_token_type type, char *value);
 

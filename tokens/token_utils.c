@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 20:38:29 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/22 23:14:38 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ void	set_operator_type(t_token **tokens) //Ajusta o tipo de operadores (| vira P
 	}
 }
 
+void	set_token_redir_type(t_token *current, char *value, char type)
+{
+	if (ft_strcmp(current->value, value) == 0)
+	{
+		if (type == '<')
+		{
+			if (ft_strcmp(value, "<<") == 0)
+			current->type = HEREDOC;
+			else
+			current->type = REDIR_IN;
+		}
+		else if (type == '>')
+		{
+			if (ft_strcmp(value, ">>") == 0)
+			current->type = APPEND;
+			else
+			current->type = REDIR_OUT;
+		}
+	}
+}
+
 void	set_redir_type(t_token *tokens, char type) //Define HEREDOC, APPEND, REDIR_IN ou REDIR_OUT.
 {
 	t_token	*current;
@@ -40,31 +61,14 @@ void	set_redir_type(t_token *tokens, char type) //Define HEREDOC, APPEND, REDIR_
 	current = tokens;
 	while (current != NULL)
 	{
-		if ((type == '<' && ft_strcmp(current->value, "<") == 0))
-		{
-			current->type = REDIR_IN;
-			break ;
-		}
-		else if ((type == '>' && ft_strcmp(current->value, ">") == 0))
-		{
-			current->type = REDIR_OUT;
-			break ;
-		}
-		else if ((type == '<' && ft_strcmp(current->value, "<<") == 0))
-		{
-			current->type = HEREDOC;
-			break ;
-		}
-		else if ((type == '>' && ft_strcmp(current->value, ">>") == 0))
-		{
-			current->type = APPEND;
-			break ;
-		}
+		// Usando a função auxiliar para verificar o tipo de redirecionamento
+		set_token_redir_type(current, "<", type);
+		set_token_redir_type(current, ">", type);
 		current = current->next;
 	}
 }
 
-t_token	*add_token(t_token **tokens, t_token_type type, char *value)
+t_token	*add_token(t_token **tokens, t_token_type type, char *value) // adiciona um novo token a uma lista duplamente encadeada de tokens
 {
 	t_token	*new_token;
 	t_token	*current;
