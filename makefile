@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/02/22 22:22:59 by danielda         ###   ########.fr        #
+#    Updated: 2025/02/23 15:21:51 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = minishell
 
 # Compilador e flags
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -I./inc
 
@@ -51,5 +52,8 @@ fclean: clean
 	@echo "🗑️  Executável removido!"
 
 re: fclean all
+
+valgrind: $(NAME) 
+	$(VALGRIND) ./$(NAME)
 
 .PHONY: all clean fclean re
