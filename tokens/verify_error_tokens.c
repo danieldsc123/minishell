@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verify_error.c                                     :+:      :+:    :+:   */
+/*   verify_error_tokens.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:26:12 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/23 18:38:02 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:30:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokens.h"
 
 //auxiliar da forbiden_tokens
 t_bool	check_forbidden(t_token *tokens, char *forbidden)
@@ -19,7 +19,7 @@ t_bool	check_forbidden(t_token *tokens, char *forbidden)
 		return (FALSE);
 	while (tokens)
 	{
-		if (tokens->value && strcmp(tokens->value, forbidden) == 0)
+		if (tokens->value && ft_strcmp(tokens->value, forbidden) == 0)
 		{
 			printf("Erro de sintaxe: token proibido encontrado\n");
 			return (TRUE);
@@ -27,6 +27,12 @@ t_bool	check_forbidden(t_token *tokens, char *forbidden)
 		tokens = tokens->next;
 	}
 	return (FALSE);
+}
+
+// Verifica tokens proibidos (caso precise adicionar alguma regra específica)
+t_bool	forbiden_token(t_token *tokens)
+{
+	return (check_forbidden(tokens, "proibido"));
 }
 
 // auxiliar da check_close_quotes
@@ -71,14 +77,4 @@ t_bool	check_close_quotes(char *input)
 		i++;
 	}
 	return (check_quote_balance(quote));
-}
-
-// Função geral que chama todas as verificações
-t_bool	check_syntax_errors(t_token *tokens, char *input)
-{
-	if (check_start_pipe(tokens) || check_op_op(tokens)
-		|| check_end_op(tokens) || forbiden_token(tokens)
-		|| check_close_quotes(input))
-		return (TRUE);
-	return (FALSE);
 }

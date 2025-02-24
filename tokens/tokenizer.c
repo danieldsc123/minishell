@@ -6,13 +6,14 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:43 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 19:45:47 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:47:53 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokens.h"
 
-void	get_operator(char *input, t_token **tokens, int *i) //Identifica operadores (|, <, >, <<, >>) e chama get_redirs_token() se necessário.
+//Identifica operadores (|, <, >, <<, >>) e chama get_redirs_token() se necessário.
+void	get_operator(char *input, t_token **tokens, int *i)
 {
 	if (input[*i] == '|')
 		add_token(tokens, PIPE, "|");
@@ -21,7 +22,8 @@ void	get_operator(char *input, t_token **tokens, int *i) //Identifica operadores
 	(*i)++;
 }
 
-void	get_word(char *input, t_token **tokens, int *i) //Captura palavras (comandos, argumentos, arquivos).
+//Captura palavras (comandos, argumentos, arquivos).
+void	get_word(char *input, t_token **tokens, int *i)
 {
 	int		start;
 	t_token	*new_token;
@@ -35,7 +37,8 @@ void	get_word(char *input, t_token **tokens, int *i) //Captura palavras (comando
 	new_token = add_token(tokens, WORD, ft_substr(input, start, *i - start));
 }
 
-void	get_redirs_token(char *input, t_token **tokens, int *i) //Trata redirecionadores (<, >, <<, >>) corretamente.
+//Trata redirecionadores (<, >, <<, >>) corretamente.
+void	get_redirs_token(char *input, t_token **tokens, int *i)
 {
 	if (input[*i] == '<')
 	{

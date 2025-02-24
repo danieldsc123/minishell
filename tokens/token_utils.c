@@ -6,13 +6,14 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/22 23:14:38 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:49:23 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokens.h"
 
-void	set_operator_type(t_token **tokens) //Ajusta o tipo de operadores (| vira PIPE, < vira REDIR_IN, etc.).
+//Ajusta o tipo de operadores (| vira PIPE, < vira REDIR_IN, etc.).
+void	set_operator_type(t_token **tokens)
 {
 	t_token	*current;
 
@@ -54,7 +55,8 @@ void	set_token_redir_type(t_token *current, char *value, char type)
 	}
 }
 
-void	set_redir_type(t_token *tokens, char type) //Define HEREDOC, APPEND, REDIR_IN ou REDIR_OUT.
+//Define HEREDOC, APPEND, REDIR_IN ou REDIR_OUT.
+void	set_redir_type(t_token *tokens, char type)
 {
 	t_token	*current;
 
@@ -68,7 +70,8 @@ void	set_redir_type(t_token *tokens, char type) //Define HEREDOC, APPEND, REDIR_
 	}
 }
 
-t_token	*add_token(t_token **tokens, t_token_type type, char *value) // adiciona um novo token a uma lista duplamente encadeada de tokens
+// adiciona um novo token a uma lista duplamente encadeada de tokens
+t_token	*add_token(t_token **tokens, t_token_type type, char *value)
 {
 	t_token	*new_token;
 	t_token	*current;

@@ -6,11 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/23 18:35:26 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:37:43 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "tokens.h"
 
 // Verifica se a entrada começa com um pipe
 t_bool	check_start_pipe(t_token *tokens)
@@ -58,10 +58,4 @@ t_bool	check_end_op(t_token *tokens)
 	while (tokens->next)
 	tokens = tokens->next;
 	return (check_end_operator(tokens));
-}
-
-// Verifica tokens proibidos (caso precise adicionar alguma regra específica)
-t_bool	forbiden_token(t_token *tokens)
-{
-	return (check_forbidden(tokens, "proibido"));
 }

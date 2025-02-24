@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   tokens.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:00:03 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/23 18:40:37 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:41:22 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef TOKENS_H
+# define TOKENS_H
 
 # include "libft/libft.h"
-# include "minishell.h"
+# include "tokens.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
