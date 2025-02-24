@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:59:22 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:34:01 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,38 @@ t_token	*lexer(char *input)
 	}
 	return (head);
 }
+
+// t_token	*lexer(char *input)
+// {
+// 	t_token	*head;
+// 	int		i;
+
+// 	i = 0;
+// 	head = NULL;
+// 	while (input[i])
+// 	{
+// 		while (input[i] == ' ' || input[i] == '\t')
+// 			i++;
+// 		if (!input[i])
+// 			break ;
+// 		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
+// 			get_operator(input, &head, &i);
+// 		else
+// 			get_word(input, &head, &i);
+// 	}
+// 	t_token *temp = head;
+// 	while (temp)
+// 	{
+// 		printf("Token gerado: %s (tipo %d)\n", temp->value, temp->type);
+// 		temp = temp->next;
+// 	}
+// 	if (check_syntax_errors(head, input))
+// 	{
+// 		free_tokens(head);
+// 		return (NULL);
+// 	}
+// 	return (head);
+// }
 
 // Função geral que chama todas as verificações
 t_bool	check_syntax_errors(t_token *tokens, char *input)

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:49:23 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:28:32 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_operator_type(t_token **tokens)
 	}
 }
 
+// auxiliar da set_redir_type.
 void	set_token_redir_type(t_token *current, char *value, char type)
 {
 	if (ft_strcmp(current->value, value) == 0)

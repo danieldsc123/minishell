@@ -6,13 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:37:43 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:31:40 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokens.h"
 
-// Verifica se a entrada começa com um pipe
+//Verifica se a entrada começa com um pipe
 t_bool	check_start_pipe(t_token *tokens)
 {
 	if (tokens && tokens->type == PIPE)
@@ -22,6 +22,19 @@ t_bool	check_start_pipe(t_token *tokens)
 	}
 	return (FALSE);
 }
+
+// t_bool	check_start_pipe(t_token *tokens)
+// {
+// 	if (!tokens) // Se não há tokens, não há erro de pipe no início
+// 		return (FALSE);
+// 	printf("Primeiro token: %s (tipo %d)\n", tokens->value, tokens->type); // Depuração
+// 	if (tokens->type == PIPE)
+// 	{
+// 		printf("Erro de sintaxe: pipe no início da linha\n");
+// 		return (TRUE);
+// 	}
+// 	return (FALSE);
+// }
 
 // Verifica se há operadores duplicados inválidos, como ||, <<>, etc.
 t_bool	check_op_op(t_token *tokens)
