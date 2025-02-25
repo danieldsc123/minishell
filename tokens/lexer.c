@@ -6,12 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 23:18:45 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:02:43 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+//processa a entrada (input) do usuário e a transforma em uma lista de tokens.
 t_token	*lexer(char *input)
 {
 	t_token	*head;
@@ -24,9 +25,8 @@ t_token	*lexer(char *input)
 		if (input[i] == ' ' || input[i] == '\t')
 		{
 			i++;
-			continue ;
 		}
-		if (input[i] == '|' || input[i] == '<' || input[i] == '>')
+		else if (input[i] == '|' || input[i] == '<' || input[i] == '>')
 			get_operator(input, &head, &i);
 		else
 			get_word(input, &head, &i);
