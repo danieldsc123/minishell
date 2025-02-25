@@ -6,13 +6,13 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:43 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 19:39:25 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:21:32 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokens.h"
+#include "minishell.h"
 
-//Identifica operadores (|, <, >, <<, >>) e chama get_redirs_token() se necessário.
+//Identifica operadores (|, <, >, <<, >>)e chama get_redirs_token se necessário.
 void	get_operator(char *input, t_token **tokens, int *i)
 {
 	if (input[*i] == '|')

@@ -6,11 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 19:28:32 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:23:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokens.h"
+#include "minishell.h"
 
 //Ajusta o tipo de operadores (| vira PIPE, < vira REDIR_IN, etc.).
 void	set_operator_type(t_token **tokens)
@@ -64,7 +64,6 @@ void	set_redir_type(t_token *tokens, char type)
 	current = tokens;
 	while (current != NULL)
 	{
-		// Usando a função auxiliar para verificar o tipo de redirecionamento
 		set_token_redir_type(current, "<", type);
 		set_token_redir_type(current, ">", type);
 		current = current->next;

@@ -6,11 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 20:34:01 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:20:06 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokens.h"
+#include "minishell.h"
 
 t_token	*lexer(char *input)
 {
