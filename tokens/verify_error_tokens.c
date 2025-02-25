@@ -6,11 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 16:26:12 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:30:04 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:28:27 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokens.h"
+#include "minishell.h"
 
 //auxiliar da forbiden_tokens
 t_bool	check_forbidden(t_token *tokens, char *forbidden)

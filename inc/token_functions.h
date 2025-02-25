@@ -1,59 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokens.h                                           :+:      :+:    :+:   */
+/*   token_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/22 19:00:03 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:41:22 by danielda         ###   ########.fr       */
+/*   Created: 2025/02/24 21:03:48 by danielda          #+#    #+#             */
+/*   Updated: 2025/02/24 21:19:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENS_H
-# define TOKENS_H
-
-# include "libft/libft.h"
-# include "tokens.h"
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-
-# include <readline/readline.h>
-# include <readline/history.h>
-
-// Definição dos tipos de tokens
-typedef enum e_token_type
-{
-	WORD,
-	PIPE,
-	REDIR_IN,
-	REDIR_OUT,
-	HEREDOC,
-	APPEND
-}	t_token_type;
-
-// Definição do tipo booleano
-typedef enum e_bool
-{
-	FALSE,
-	TRUE
-}	t_bool;
-
-// Estrutura para os tokens da entrada do usuário
-typedef struct s_token
-{
-	char			*value;
-	t_token_type	type;
-	struct s_token	*next;
-	struct s_token	*prev;
-}	t_token;
+#ifndef TOKEN_FUNCTIONS_H
+# define TOKEN_FUNCTIONS_H
 
 t_token	*lexer(char *input);
 void	get_operator(char *input, t_token **tokens, int *i);

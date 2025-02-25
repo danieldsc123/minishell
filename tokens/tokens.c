@@ -6,11 +6,11 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:08:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 17:46:21 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/24 21:21:10 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tokens.h"
+#include "minishell.h"
 
 //Cria e adiciona um novo token à lista encadeada.
 t_token	*allocate_token(t_token **tokens, char *input, int start, int end)
