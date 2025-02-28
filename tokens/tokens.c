@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 21:08:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 21:21:10 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:43:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,15 @@ t_token	*allocate_token(t_token **tokens, char *input, int start, int end)
 {
 	t_token	*new_token;
 	t_token	*current;
+	char	*value;
 
+	value = remove_quotes(ft_strndup(input + start, end - start));
+	if (!value)
+		return (NULL);
 	new_token = ft_calloc(1, sizeof(t_token));
 	if (!new_token)
 		return (NULL);
-	new_token->value = ft_strndup(input + start, end - start);
-	if (!new_token->value)
-	{
-		free(new_token);
-		return (NULL);
-	}
+	new_token->value = value;
 	new_token->next = NULL;
 	if (*tokens == NULL)
 		*tokens = new_token;
@@ -54,7 +53,7 @@ void	free_tokens(t_token *tokens)
 	}
 }
 
-// opcional para debug
+//opcional para debug
 void	print_tokens(t_token *tokens)
 {
 	if (!tokens)

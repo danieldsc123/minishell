@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:03:48 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/25 20:21:44 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:13:27 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	set_operator_type(t_token **tokens);
 void	set_token_redir_type(t_token *current, char *value, char type);
 void	set_redir_type(t_token *tokens, char type);
 t_token	*add_token(t_token **tokens, t_token_type type, char *value);
+t_bool	is_quote(char c);
+void	skip_quotes(char *input, int *i);
+t_bool	has_unclosed_quotes(char *input);
+char	*remove_quotes(char *str);
 int		main(void);
 
 // Verificações de erro
