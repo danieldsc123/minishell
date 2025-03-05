@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:55:50 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/27 22:01:08 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:16:18 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,23 @@ char	*remove_quotes(char *str)
 	}
 	new_str[j] = '\0';
 	return (new_str);
+}
+
+//função que percorra todos os tokens e aplique remove_quotes em cada value.
+void	remove_quotes_from_tokens(t_token *tokens)
+{
+	t_token	*tmp;
+	char	*new_value;
+
+	tmp = tokens;
+	while (tmp)
+	{
+		new_value = remove_quotes(tmp->value);
+		if (new_value)
+		{
+			free(tmp->value);
+			tmp->value = new_value;
+		}
+		tmp = tmp->next;
+	}
 }
