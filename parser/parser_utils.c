@@ -6,34 +6,55 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:33 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/25 19:13:05 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/05 20:25:32 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-//get_next_token() pode usar a mesma estrutura de lista de tokens criada no lexer.
-
-// Retorna o próximo token e avança na lista.
-get_next_token()
+// Criar um novo nó de comando na lista ligada
+t_cmd	*cmd_new(char **args, int is_pipe, int is_redir)
 {
+	t_cmd	*cmd;
 
+	cmd = (t_cmd *)malloc(sizeof(t_cmd));
+	if (!cmd)
+		return (NULL);
+	cmd->args = args;
+	cmd->is_pipe = is_pipe;
+	cmd->is_redir = is_redir;
+	cmd->next = NULL;
+	return (cmd);
 }
 
-//Verifica se um token é um operador (|, &&, ||).
-is_redirection_token()
+//Adicionar um novo comando ao final da lista ligada.
+void	cmd_add_back(t_cmd **cmds, t_cmd *new_cmd)
 {
+	t_cmd	*temp;
 
+	if (!cmds || !new_cmd)
+		return ;
+	if (!*cmds)
+	{
+		*cmds = new_cmd;
+		return ;
+	}
+	temp = *cmds;
+	while (temp->next)
+		temp = temp->next;
+	temp->next = new_cmd;
 }
 
-//Ignora tokens vazios ou espaços em branco.
-skip_whitespace_tokens()
+//Liberar toda a memória alocada para a lista de comandos.
+void	free_cmd_list(t_cmd *cmds)
 {
+	t_cmd	*temp;
 
-}
-
-//(opcional) Depuração, imprime a lista de tokens.
-print_tokens()
-{
-
+	while (cmds)
+	{
+		temp = cmds;
+		cmds = cmds->next;
+		free(temp->args);
+		free(temp);
+	}
 }
