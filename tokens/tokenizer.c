@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:43 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 21:21:32 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/27 21:42:03 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,19 @@ void	get_operator(char *input, t_token **tokens, int *i)
 void	get_word(char *input, t_token **tokens, int *i)
 {
 	int		start;
-	t_token	*new_token;
 
 	while (input[*i] == ' ')
 	(*i)++;
 	start = *i;
 	while (input[*i] && input[*i] != ' ' && input[*i] != '|'
 		&& input[*i] != '<' && input[*i] != '>')
-	(*i)++;
-	new_token = add_token(tokens, WORD, ft_substr(input, start, *i - start));
+	{
+		if (is_quote(input[*i]))
+			skip_quotes(input, i);
+		else
+			(*i)++;
+	}
+	add_token(tokens, WORD, ft_substr(input, start, *i - start));
 }
 
 //Trata redirecionadores (<, >, <<, >>) corretamente.

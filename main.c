@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:03:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/07 16:39:47 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:46:09 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(void)
 		if (*input)
 			add_history(input);
 		tokens = lexer(input);
+		remove_quotes_from_tokens(tokens);
 		print_tokens(tokens);
 		cmds = parse_tokens(tokens);
 		if (cmds)

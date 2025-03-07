@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 21:22:50 by danielda         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:28:24 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ t_bool	check_op_op(t_token *tokens)
 	return (FALSE);
 }
 
-// auxiliar da check_end_op
-t_bool	check_end_operator(t_token *token)
+// Verifica se a entrada termina com um operador inválido
+t_bool	check_end_op(t_token *tokens)
 {
-	if (token && (token->type >= PIPE && token->type <= APPEND))
+	if (!tokens)
+		return (FALSE);
+	while (tokens->next)
+		tokens = tokens->next;
+	if (tokens->type >= PIPE && tokens->type <= APPEND)
 	{
 		printf("Erro de sintaxe: operador no final da linha\n");
 		return (TRUE);
@@ -50,12 +54,44 @@ t_bool	check_end_operator(t_token *token)
 	return (FALSE);
 }
 
-// Verifica se a entrada termina com um operador inválido
-t_bool	check_end_op(t_token *tokens)
+// Verifica tokens proibidos (caso precise adicionar alguma regra específica)
+t_bool	forbiden_token(t_token *tokens)
 {
-	if (!tokens)
-		return (FALSE);
-	while (tokens->next)
-	tokens = tokens->next;
-	return (check_end_operator(tokens));
+	while (tokens)
+	{
+		if (tokens->value && ft_strcmp(tokens->value, "proibido") == 0)
+		{
+			printf("Erro de sintaxe: token proibido encontrado\n");
+			return (TRUE);
+		}
+		tokens = tokens->next;
+	}
+	return (FALSE);
+}
+
+// Verifica se todas as aspas foram fechadas corretamente
+t_bool	check_close_quotes(char *input)
+{
+	int		i;
+	char	quote;
+
+	i = 0;
+	quote = 0;
+	while (input[i])
+	{
+		if ((input[i] == '"' || input[i] == '\''))
+		{
+			if (quote && quote == input[i])
+				quote = 0;
+			else if (!quote)
+				quote = input[i];
+		}
+		i++;
+	}
+	if (quote)
+	{
+		printf("Erro de sintaxe: aspas não fechadas corretamente\n");
+		return (TRUE);
+	}
+	return (FALSE);
 }
