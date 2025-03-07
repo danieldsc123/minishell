@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/07 18:45:22 by danielda         ###   ########.fr        #
+#    Updated: 2025/03/07 18:59:41 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,21 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g3 -I./inc
 
 # Diretórios e arquivos
-SRCS = main.c tokens/lexer.c tokens/tokenizer.c tokens/tokens.c tokens/token_utils.c tokens/syntax_error.c tokens/verify_error_tokens.c parser/parser_utils.c parser/parser.c parser/syntax_error_p.c tokens/quotes.c
+SRCS = \
+    main.c \
+    tokens/lexer.c \
+    tokens/tokenizer.c \
+    tokens/tokens.c \
+    tokens/token_utils.c \
+    tokens/syntax_error.c \
+    tokens/quotes.c \
+    parser/parser_utils.c \
+    parser/parser.c \
+    parser/syntax_error_p.c \
+
 OBJS = $(SRCS:.c=.o)
+# SRCS = main.c tokens/lexer.c tokens/tokenizer.c tokens/tokens.c tokens/token_utils.c tokens/syntax_error.c parser/parser_utils.c parser/parser.c parser/syntax_error_p.c tokens/quotes.c
+# OBJS = $(SRCS:.c=.o)
 
 # Bibliotecas externas
 LIBFT = ./inc/libft/libft.a
