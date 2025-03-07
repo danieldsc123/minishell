@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/02/21 15:06:45 by danielda          #+#    #+#              #
-#    Updated: 2025/02/21 15:44:36 by danielda         ###   ########.fr        #
+#    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
+#    Updated: 2025/03/07 18:05:36 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,50 +14,46 @@
 NAME = minishell
 
 # Compilador e flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g3 -I./inc
 
-# Diretórios
-SRCDIR = src
-OBJDIR = obj
-INCDIR = include
+# Diretórios e arquivos
+SRCS = main.c tokens/lexer.c tokens/tokenizer.c tokens/tokens.c tokens/token_utils.c tokens/syntax_error.c tokens/verify_error_tokens.c parser/parser_utils.c parser/parser.c parser/syntax_error_p.c
+OBJS = $(SRCS:.c=.o)
 
-# Bibliotecas
-LIBS = -lreadline -L/usr/local/lib -I/usr/local/include
+# Bibliotecas externas (caso tenha libft)
+LIBFT = ./inc/libft/libft.a
+LIBFT_DIR = ./inc/libft
 
-# Arquivos fonte
-SRCS = $(wildcard $(SRCDIR)/*.c)
+# Bibliotecas necessárias para readline
+LDFLAGS = -L/usr/local/lib -lreadline -lhistory
 
-# Arquivos objeto
-OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
-
-# Regra padrão
+# Comandos
 all: $(NAME)
 
-# Compila o programa
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
+	# Compila a libft, se necessário
+	@make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $(NAME)
+	@echo "✅ Compilação concluída!"
 
-# Diretórios da Libft                                                                                    
-LIBFT_DIR = ./library/libft
-LIBFT = $(LIBFT_DIR)/libft.a
-LIBFT_INC = $(LIBFT_DIR)/include
+%.o: %.c inc/minishell.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Compila arquivos objeto
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) $(LIBFT) -I$(INCDIR) -c $< -o $@
-
-# Cria o diretório de objetos se não existir
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-
-# Limpeza
 clean:
-	rm -rf $(OBJDIR)
+	rm -f $(OBJS)
+	@make clean -C $(LIBFT_DIR) #Limpa a libft também
+	@echo "🧹 Objetos removidos!"
 
 fclean: clean
 	rm -f $(NAME)
+	@make fclean -C $(LIBFT_DIR)
+	@echo "🗑️  Executável removido!"
 
 re: fclean all
+
+valgrind: $(NAME) 
+	$(VALGRIND) ./$(NAME)
 
 .PHONY: all clean fclean re
