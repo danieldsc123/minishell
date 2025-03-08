@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:03:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/07 22:33:13 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:36:33 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(void)
 	char			*input;
 	t_token			*tokens;
 	t_cmd			*cmds;
-	// extern char	**environ; // fazer uma cópia das variaveis de ambiente
+	extern char		**environ;// fazer uma cópia das variaveis de ambiente
 
 	while (1)
 	{
