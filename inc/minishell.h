@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:00:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/05 19:43:36 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:32:42 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@
 # include "token_functions.h"
 # include "parser_struct.h"
 # include "parser_functions.h"
+
+// struct minishell
+// {
+// 	/* data */
+// };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:03:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/07 18:46:09 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/07 22:33:13 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	print_cmds(t_cmd *cmds)
 
 int	main(void)
 {
-	char	*input;
-	t_token	*tokens;
-	t_cmd	*cmds;
+	char			*input;
+	t_token			*tokens;
+	t_cmd			*cmds;
+	// extern char	**environ; // fazer uma cópia das variaveis de ambiente
 
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:06:46 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/07 16:36:46 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/07 21:23:23 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	**get_args(t_token **tokens)
 	i = 0;
 	while (*tokens && (*tokens)->type == WORD)
 	{
-		args[i] = strdup((*tokens)->value);
+		args[i] = ft_strdup((*tokens)->value);
 		*tokens = (*tokens)->next;
 		i++;
 	}
