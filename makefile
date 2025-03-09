@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/07 21:45:17 by danielda         ###   ########.fr        #
+#    Updated: 2025/03/09 01:29:51 by daniel-da        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,10 @@ SRCS = \
     parser/parser_utils.c \
     parser/parser.c \
     parser/syntax_error_p.c \
+	expansor/exp_utils.c \
+	expansor/expand_env.c \
+	expansor/expander.c \
+	expansor/remove_quotes.c \
 
 OBJS = $(SRCS:.c=.o)
 
