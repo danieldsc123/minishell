@@ -1,0 +1,106 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/10 01:20:00 by daniel-da         #+#    #+#             */
+/*   Updated: 2025/03/10 01:31:29 by daniel-da        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+char	*expand_input(char *input, t_env *env)
+{
+	char	*expanded;
+
+	if (!input || !*input)
+		return (input);
+	expanded = expand_variables(input, env);
+	free(input);
+	return (expanded);
+}
+
+void	execute_minishell(t_env *env)
+{
+	char	*input;
+	t_token	*tokens;
+	t_cmd	*cmds;
+
+	while (1)
+	{
+		input = readline("minishell> ");
+		if (!input)
+			break ;
+		if (*input)
+			add_history(input);
+		input = expand_input(input, env);
+		tokens = lexer(input);
+		print_tokens(tokens);
+		cmds = parse_tokens(tokens);
+		if (cmds)
+			print_cmds(cmds);
+		free_cmd_list(cmds);
+		free_tokens(tokens);
+		free(input);
+	}
+}
+
+// Inicializa a lista de variáveis de ambiente a partir do environ
+// Retorna um ponteiro para a lista encadeada de t_env
+t_env	*init_env(void)
+{
+	extern char	**environ;
+	t_env		*env_list;
+	char		**env;
+
+	env_list = NULL;
+	env = environ;
+	while (*env)
+	{
+		add_env_var(&env_list, *env);
+		env++;
+	}
+	return (env_list);
+}
+
+// Libera toda a memória alocada para a lista de variáveis de ambiente
+void	free_env(t_env *env)
+{
+	t_env	*temp;
+
+	while (env)
+	{
+		temp = env->next;
+		free(env->name);
+		free(env->value);
+		free(env);
+		env = temp;
+	}
+}
+
+// Adiciona uma variável de ambiente à lista
+void	add_env_var(t_env **env_list, char *env_str)
+{
+	t_env	*new_env;
+	char	*equal_sign;
+
+	new_env = malloc(sizeof(t_env));
+	if (!new_env)
+		return ;
+	equal_sign = ft_strchr(env_str, '=');
+	if (equal_sign)
+	{
+		new_env->name = ft_substr(env_str, 0, equal_sign - env_str);
+		new_env->value = ft_strdup(equal_sign + 1);
+	}
+	else
+	{
+		new_env->name = ft_strdup(env_str);
+		new_env->value = NULL;
+	}
+	new_env->next = *env_list;
+	*env_list = new_env;
+}

@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:51 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/09 19:04:08 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/10 01:31:48 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,10 @@ char	*remove_extra_quotes(char *str);
 char	*expand_env_value(char *str, t_expander *exp);
 char	*expand_loop(t_expander *exp);
 char	*ft_strjoin_three(char *s1, char *s2, char *s3);
+char	*expand_input(char *input, t_env *env);
+void	execute_minishell(t_env *env);
+t_env	*init_env(void);
+void	free_env(t_env *env);
+void	add_env_var(t_env **env_list, char *env_str);
+
 #endif
