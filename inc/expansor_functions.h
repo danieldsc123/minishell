@@ -6,21 +6,24 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:51 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/09 01:35:16 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/09 19:04:08 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-#include "minishell.h"
 
 #ifndef EXPANSOR_FUNCTIONS_H
 # define EXPANSOR_FUNCTIONS_H
 
-int is_valid_var_char(char c);
-char    *get_var_name(char *str);
-char    *get_env_value(char *var_name, t_env *env);
-char    *replace_var(char *input, char *var_name, char *value);
-char    *expand_variables(char *input, t_env *env);
-char    *remove_extra_quotes(char *str);
-
+int		is_valid_var_char(char c);
+int		var_name_len(char *str);
+int		find_var_position(char *input, char *var_name);
+char	*ft_strjoin_free(char *s1, char *s2);
+char	*ft_charjoin_free(char *s1, char c);
+char	*get_var_name(char *str);
+char	*get_env_value(char *var_name, t_env *env);
+char	*replace_var(char *input, char *var_name, char *value);
+char	*expand_variables(char *input, t_env *env);
+char	*remove_extra_quotes(char *str);
+char	*expand_env_value(char *str, t_expander *exp);
+char	*expand_loop(t_expander *exp);
+char	*ft_strjoin_three(char *s1, char *s2, char *s3);
 #endif
