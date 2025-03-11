@@ -6,14 +6,14 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:51 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/10 01:31:48 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 07:12:50 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPANSOR_FUNCTIONS_H
 # define EXPANSOR_FUNCTIONS_H
 
-int		is_valid_var_char(char c);
+int		is_valid_var_char(char c, int first);
 int		var_name_len(char *str);
 int		find_var_position(char *input, char *var_name);
 char	*ft_strjoin_free(char *s1, char *s2);

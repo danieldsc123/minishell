@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:05:24 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/09 19:04:51 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 07:04:55 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,32 @@ char	*replace_var(char *input, char *var_name, char *value)
 		return (ft_strdup(input));
 	before = ft_substr(input, 0, pos);
 	after = ft_strdup(&input[pos + ft_strlen(var_name) + 1]);
-	new_str = ft_strjoin_three(before, value, after);
+	if (!value)
+		new_str = ft_strjoin_three(before, "", after);
+	else
+		new_str = ft_strjoin_three(before, value, after);
 	free(before);
 	free(after);
 	return (new_str);
 }
+
+// char	*replace_var(char *input, char *var_name, char *value)
+// {
+// 	char	*before;
+// 	char	*after;
+// 	char	*new_str;
+// 	int		pos;
+
+// 	pos = find_var_position(input, var_name);
+// 	if (pos == -1)
+// 		return (ft_strdup(input));
+// 	before = ft_substr(input, 0, pos);
+// 	after = ft_strdup(&input[pos + ft_strlen(var_name) + 1]);
+// 	new_str = ft_strjoin_three(before, value, after);
+// 	free(before);
+// 	free(after);
+// 	return (new_str);
+// }
 
 //Se a variável for $?, retorna o código de saída.
 char	*expand_env_value(char *str, t_expander *exp)
@@ -78,8 +99,23 @@ char	*expand_env_value(char *str, t_expander *exp)
 	var_name = get_var_name(&str[1]);
 	var_value = get_env_value(var_name, exp->env_list);
 	free(var_name);
+	if (!var_value)
+		return (ft_strdup(""));
 	return (var_value);
 }
+
+// char	*expand_env_value(char *str, t_expander *exp)
+// {
+// 	char	*var_name;
+// 	char	*var_value;
+
+// 	if (str[1] == '?')
+// 		return (ft_itoa(exp->status_code));
+// 	var_name = get_var_name(&str[1]);
+// 	var_value = get_env_value(var_name, exp->env_list);
+// 	free(var_name);
+// 	return (var_value);
+// }
 
 //Junta três strings em uma nova e libera as originais.
 char	*ft_strjoin_three(char *s1, char *s2, char *s3)
