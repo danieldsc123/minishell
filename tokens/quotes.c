@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:55:50 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/09 19:37:55 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 19:58:12 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,51 +57,51 @@ t_bool	has_unclosed_quotes(char *input)
 	return (FALSE);
 }
 
-// //Remove aspas de um token, mantendo o conteúdo interno.
-// char	*remove_quotes(char *str)
-// {
-// 	int		i;
-// 	int		j;
-// 	char	*new_str;
-// 	char	quote;
+//Remove aspas de um token, mantendo o conteúdo interno.
+char	*remove_quotes(char *str)
+{
+	int		i;
+	int		j;
+	char	*new_str;
+	char	quote;
 
-// 	if (!str)
-// 		return (NULL);
-// 	new_str = malloc(ft_strlen(str) + 1);
-// 	if (!new_str)
-// 		return (NULL);
-// 	i = 0;
-// 	j = 0;
-// 	while (str[i])
-// 	{
-// 		if (is_quote(str[i]))
-// 		{
-// 			quote = str[i++];
-// 			while (str[i] && str[i] != quote)
-// 				new_str[j++] = str[i++];
-// 		}
-// 		else
-// 			new_str[j++] = str[i++];
-// 	}
-// 	new_str[j] = '\0';
-// 	return (new_str);
-// }
+	if (!str)
+		return (NULL);
+	new_str = malloc(ft_strlen(str) + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (is_quote(str[i]))
+		{
+			quote = str[i++];
+			while (str[i] && str[i] != quote)
+				new_str[j++] = str[i++];
+		}
+		else
+			new_str[j++] = str[i++];
+	}
+	new_str[j] = '\0';
+	return (new_str);
+}
 
-// //função que percorra todos os tokens e aplique remove_quotes em cada value.
-// void	remove_quotes_from_tokens(t_token *tokens)
-// {
-// 	t_token	*tmp;
-// 	char	*new_value;
+//função que percorra todos os tokens e aplique remove_quotes em cada value.
+void	remove_quotes_from_tokens(t_token *tokens)
+{
+	t_token	*tmp;
+	char	*new_value;
 
-// 	tmp = tokens;
-// 	while (tmp)
-// 	{
-// 		new_value = remove_quotes(tmp->value);
-// 		if (new_value)
-// 		{
-// 			free(tmp->value);
-// 			tmp->value = new_value;
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// }
+	tmp = tokens;
+	while (tmp)
+	{
+		new_value = remove_quotes(tmp->value);
+		if (new_value)
+		{
+			free(tmp->value);
+			tmp->value = new_value;
+		}
+		tmp = tmp->next;
+	}
+}

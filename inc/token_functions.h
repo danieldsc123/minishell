@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:03:48 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/09 19:38:31 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 19:57:33 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ t_token	*add_token(t_token **tokens, t_token_type type, char *value);
 t_bool	is_quote(char c);
 void	skip_quotes(char *input, int *i);
 t_bool	has_unclosed_quotes(char *input);
-// char	*remove_quotes(char *str);
-// void	remove_quotes_from_tokens(t_token *tokens);
+char	*remove_quotes(char *str);
+void	remove_quotes_from_tokens(t_token *tokens);
 int		main(void);
 
 // Verificações de erro

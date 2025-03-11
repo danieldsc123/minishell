@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/24 21:23:04 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/11 19:21:28 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	set_token_redir_type(t_token *current, char *value, char type)
 		if (type == '<')
 		{
 			if (ft_strcmp(value, "<<") == 0)
-			current->type = HEREDOC;
+				current->type = HEREDOC;
 			else
-			current->type = REDIR_IN;
+				current->type = REDIR_IN;
 		}
 		else if (type == '>')
 		{
 			if (ft_strcmp(value, ">>") == 0)
-			current->type = APPEND;
+				current->type = APPEND;
 			else
-			current->type = REDIR_OUT;
+				current->type = REDIR_OUT;
 		}
 	}
 }

@@ -6,12 +6,15 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:20:00 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/10 01:31:29 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 19:32:46 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+//Recebe a entrada do usuário (input) e o ambiente (env).
+//Expande variáveis dentro da entrada usando expand_variables(input, env).
+//Libera a memória da entrada original e retorna a nova string expandida.
 char	*expand_input(char *input, t_env *env)
 {
 	char	*expanded;
@@ -21,31 +24,6 @@ char	*expand_input(char *input, t_env *env)
 	expanded = expand_variables(input, env);
 	free(input);
 	return (expanded);
-}
-
-void	execute_minishell(t_env *env)
-{
-	char	*input;
-	t_token	*tokens;
-	t_cmd	*cmds;
-
-	while (1)
-	{
-		input = readline("minishell> ");
-		if (!input)
-			break ;
-		if (*input)
-			add_history(input);
-		input = expand_input(input, env);
-		tokens = lexer(input);
-		print_tokens(tokens);
-		cmds = parse_tokens(tokens);
-		if (cmds)
-			print_cmds(cmds);
-		free_cmd_list(cmds);
-		free_tokens(tokens);
-		free(input);
-	}
 }
 
 // Inicializa a lista de variáveis de ambiente a partir do environ

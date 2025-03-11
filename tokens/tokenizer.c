@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:43 by danielda          #+#    #+#             */
-/*   Updated: 2025/02/27 21:42:03 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/11 19:20:37 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void	get_operator(char *input, t_token **tokens, int *i)
 void	get_word(char *input, t_token **tokens, int *i)
 {
 	int		start;
+	char	*word;
 
 	while (input[*i] == ' ')
-	(*i)++;
+		(*i)++;
 	start = *i;
 	while (input[*i] && input[*i] != ' ' && input[*i] != '|'
 		&& input[*i] != '<' && input[*i] != '>')
@@ -38,7 +39,11 @@ void	get_word(char *input, t_token **tokens, int *i)
 		else
 			(*i)++;
 	}
-	add_token(tokens, WORD, ft_substr(input, start, *i - start));
+	word = ft_substr(input, start, *i - start);
+	if (!word)
+		return ;
+	add_token(tokens, WORD, word);
+	free(word);
 }
 
 //Trata redirecionadores (<, >, <<, >>) corretamente.

@@ -6,7 +6,7 @@
 #    By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/10 01:20:51 by daniel-da        ###   ########.fr        #
+#    Updated: 2025/03/11 19:29:56 by daniel-da        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS = \
 	expansor/expander.c \
 	expansor/remove_quotes.c \
 	expansor/utils.c \
+	mold_minishell/execult_mini.c \
 
 OBJS = $(SRCS:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:06:46 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/07 21:23:23 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/11 17:27:52 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_cmd	*parse_tokens(t_token *tokens)
 					|| tokens->type == REDIR_OUT));
 		cmd_add_back(&cmds, cmd_new(args, is_pipe, is_redir));
 		if (tokens)
-		tokens = tokens->next;
+			tokens = tokens->next;
 	}
 	return (cmds);
 }
