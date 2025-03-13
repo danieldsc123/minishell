@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:51 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/11 19:50:38 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/12 18:46:50 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ char	*expand_input(char *input, t_env *env);
 t_env	*init_env(void);
 void	free_env(t_env *env);
 void	add_env_var(t_env **env_list, char *env_str);
+void	free_env(t_env *env_list);
 
 #endif

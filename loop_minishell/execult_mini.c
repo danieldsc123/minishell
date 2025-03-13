@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/11 20:01:56 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/11 22:01:09 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	execute_minishell(t_env *env)
 		if (*input)
 			add_history(input);
 		input = expand_input(input, env);
+		input = remove_extra_quotes(input);
 		tokens = lexer(input);
 		print_tokens(tokens);
 		cmds = parse_tokens(tokens);
