@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:33 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/13 21:40:16 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/14 03:00:10 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ void	cmd_add_back(t_cmd **cmds, t_cmd *new_cmd)
 void	free_cmd_list(t_cmd *cmds)
 {
 	t_cmd	*temp;
+	int		i;
 
+	i = -1;
 	while (cmds)
 	{
 		temp = cmds;
 		cmds = cmds->next;
+		while (temp->args && temp->args[++i])
+			free(temp->args[i]);
 		free(temp->args);
 		free(temp);
 	}

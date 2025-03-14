@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:20:00 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/11 19:32:46 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/14 03:56:23 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ void	free_env(t_env *env)
 	{
 		temp = env->next;
 		free(env->name);
+		env->name = NULL;
 		free(env->value);
+		env->value = NULL;
 		free(env);
 		env = temp;
 	}
+	env = NULL;
 }
 
 // Adiciona uma variável de ambiente à lista
