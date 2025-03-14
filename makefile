@@ -6,7 +6,7 @@
 #    By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/12 19:34:46 by daniel-da        ###   ########.fr        #
+#    Updated: 2025/03/13 20:54:28 by daniel-da        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 # Compilador e flags
 VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --suppressions=readline.supp
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -I./inc
 
 # Diretórios e arquivos

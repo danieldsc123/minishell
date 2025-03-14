@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:06 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/09 18:47:39 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/13 21:40:38 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_env
 {
 	char			*name;// Nome da variável (ex: "PATH")
 	char			*value;// Valor da variável (ex: "/usr/bin:/bin")
+	// char			*key;// Chave da variável (ex: "PATH=")
 	struct s_env	*next;// Próximo nó da lista
 }	t_env;
 

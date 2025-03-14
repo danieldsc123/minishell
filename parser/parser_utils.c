@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:33 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/05 20:25:32 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/13 21:40:16 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,32 @@ void	free_cmd_list(t_cmd *cmds)
 		free(temp);
 	}
 }
+
+void	free_args(char **args)
+{
+	int	i;
+
+	if (!args)
+		return ;
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+}
+
+// void	free_env_vars(t_env *env)
+// {
+// 	t_env	*tmp;
+
+// 	while (env)
+// 	{
+// 		tmp = env;
+// 		free(tmp->key);
+// 		free(tmp->value);
+// 		free(tmp);
+// 		env = env->next;
+// 	}
+// }
