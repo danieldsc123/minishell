@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/15 01:58:43 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:21:40 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,25 +73,50 @@ t_bool	forbiden_token(t_token *tokens)
 t_bool	check_close_quotes(char *input)
 {
 	int		i;
-	char	quote;
+	int		single_quote;
+	int		double_quote;
 
 	i = 0;
-	quote = 0;
+	single_quote = 0;
+	double_quote = 0;
 	while (input[i])
 	{
-		if ((input[i] == '"' || input[i] == '\''))
-		{
-			if (quote && quote == input[i])
-				quote = 0;
-			else if (!quote)
-				quote = input[i];
-		}
+		if (input[i] == '\'' && double_quote == 0)
+			single_quote = !single_quote;
+		else if (input[i] == '"' && single_quote == 0)
+			double_quote = !double_quote;
 		i++;
 	}
-	if (quote)
+	if (single_quote || double_quote)
 	{
 		printf("Erro de sintaxe: aspas não fechadas corretamente\n");
 		return (TRUE);
 	}
 	return (FALSE);
 }
+
+// t_bool	check_close_quotes(char *input)
+// {
+// 	int		i;
+// 	char	quote;
+
+// 	i = 0;
+// 	quote = 0;
+// 	while (input[i])
+// 	{
+// 		if ((input[i] == '"' || input[i] == '\''))
+// 		{
+// 			if (quote && quote == input[i])
+// 				quote = 0;
+// 			else if (!quote)
+// 				quote = input[i];
+// 		}
+// 		i++;
+// 	}
+// 	if (quote)
+// 	{
+// 		printf("Erro de sintaxe: aspas não fechadas corretamente\n");
+// 		return (TRUE);
+// 	}
+// 	return (FALSE);
+// }

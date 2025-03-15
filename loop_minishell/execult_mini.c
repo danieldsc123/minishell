@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/15 01:21:27 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:33:59 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	execute_minishell(t_env *env)
 			break ;
 		if (*input)
 			add_history(input);
+		if (check_close_quotes(input)) // Verificação ANTES da tokenização
+		{
+			free(input);
+			continue ;
+		}
 		input = expand_input(input, env);
 		input = remove_extra_quotes(input);
 		tokens = lexer(input);
@@ -38,6 +43,32 @@ void	execute_minishell(t_env *env)
 		free(input);
 	}
 }
+
+// void	execute_minishell(t_env *env)
+// {
+// 	char	*input;
+// 	t_token	*tokens;
+// 	t_cmd	*cmds;
+
+// 	while (1)
+// 	{
+// 		input = readline("minishell> ");
+// 		if (!input)
+// 			break ;
+// 		if (*input)
+// 			add_history(input);
+// 		input = expand_input(input, env);
+// 		input = remove_extra_quotes(input);
+// 		tokens = lexer(input);
+// 		print_tokens(tokens);
+// 		cmds = parse_tokens(tokens);
+// 		if (cmds)
+// 			print_cmds(cmds);
+// 		free_cmd_list(cmds);
+// 		free_tokens(tokens);
+// 		free(input);
+// 	}
+// }
 
 // void	sigint_handler(int sig)
 // {

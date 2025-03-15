@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/13 03:02:16 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/15 02:23:41 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ t_token	*lexer(char *input)
 			get_word(input, &head, &i);
 	}
 	remove_quotes_from_tokens(head);
-	if (check_syntax_errors(head, input))
-	{
-		free_tokens(head);
-		return (NULL);
-	}
 	return (head);
 }
 
