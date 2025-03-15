@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_functions.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:03:48 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/11 19:57:33 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/15 01:41:23 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,9 @@ int		main(void);
 t_bool	check_start_pipe(t_token *tokens);
 t_bool	check_op_op(t_token *tokens);
 t_bool	check_end_op(t_token *tokens);
-// t_bool	check_end_operator(t_token *token);
 t_bool	forbiden_token(t_token *tokens);
-// t_bool	check_forbidden(t_token *tokens, char *forbidden);
 t_bool	check_close_quotes(char *input);
 t_bool	toggle_quote(char quote, char c);
-// t_bool	check_quote_balance(char quote);
 t_bool	check_syntax_errors(t_token *tokens, char *input);
 
 #endif

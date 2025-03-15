@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 00:52:38 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/11 06:29:33 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/15 01:40:13 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,3 @@ char	*expand_loop(t_expander *exp)
 	}
 	return (exp->output);
 }
-
-// char	*expand_loop(t_expander *exp)
-// {
-// 	int		i;
-// 	char	*var_value;
-
-// 	i = 0;
-// 	while (exp->input[i])
-// 	{
-// 		if (exp->input[i] == '$' && exp->input[i + 1])
-// 		{
-// 			var_value = expand_env_value(&exp->input[i], exp);
-// 			exp->output = ft_strjoin_free(exp->output, var_value);
-// 			i += var_name_len(&exp->input[i]);
-// 		}
-// 		else
-// 			exp->output = ft_charjoin_free(exp->output, exp->input[i++]);
-// 	}
-// 	return (exp->output);
-// }

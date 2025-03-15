@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:33 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/14 03:00:10 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:22:11 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	free_cmd_list(t_cmd *cmds)
 	t_cmd	*temp;
 	int		i;
 
-	i = -1;
 	while (cmds)
 	{
+		i = -1;
 		temp = cmds;
 		cmds = cmds->next;
 		while (temp->args && temp->args[++i])
