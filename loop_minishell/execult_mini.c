@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/15 02:33:59 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/15 23:51:55 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	execute_minishell(t_env *env)
 			break ;
 		if (*input)
 			add_history(input);
-		if (check_close_quotes(input)) // Verificação ANTES da tokenização
+		if (check_close_quotes(input))
 		{
 			free(input);
 			continue ;
@@ -34,6 +34,12 @@ void	execute_minishell(t_env *env)
 		input = expand_input(input, env);
 		input = remove_extra_quotes(input);
 		tokens = lexer(input);
+		if (check_syntax_errors(tokens, input))
+		{
+			free_tokens(tokens);
+			free(input);
+			continue ;
+		}
 		print_tokens(tokens);
 		cmds = parse_tokens(tokens);
 		if (cmds)
@@ -57,6 +63,11 @@ void	execute_minishell(t_env *env)
 // 			break ;
 // 		if (*input)
 // 			add_history(input);
+// 		if (check_close_quotes(input))
+// 		{
+// 			free(input);
+// 			continue ;
+// 		}
 // 		input = expand_input(input, env);
 // 		input = remove_extra_quotes(input);
 // 		tokens = lexer(input);
@@ -68,10 +79,4 @@ void	execute_minishell(t_env *env)
 // 		free_tokens(tokens);
 // 		free(input);
 // 	}
-// }
-
-// void	sigint_handler(int sig)
-// {
-// 	(void)sig;
-// 	write(1, "\nminishell> ", 12);
 // }

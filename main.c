@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:03:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/15 01:26:50 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/15 23:53:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 
 	env = init_env();
 	execute_minishell(env);
-	//free_env(env); não esta liberando a coisa certa
+	free_env(env);
 	clear_history();
 	rl_clear_history();
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/15 02:21:40 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/16 00:17:51 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,29 +94,3 @@ t_bool	check_close_quotes(char *input)
 	}
 	return (FALSE);
 }
-
-// t_bool	check_close_quotes(char *input)
-// {
-// 	int		i;
-// 	char	quote;
-
-// 	i = 0;
-// 	quote = 0;
-// 	while (input[i])
-// 	{
-// 		if ((input[i] == '"' || input[i] == '\''))
-// 		{
-// 			if (quote && quote == input[i])
-// 				quote = 0;
-// 			else if (!quote)
-// 				quote = input[i];
-// 		}
-// 		i++;
-// 	}
-// 	if (quote)
-// 	{
-// 		printf("Erro de sintaxe: aspas não fechadas corretamente\n");
-// 		return (TRUE);
-// 	}
-// 	return (FALSE);
-// }
