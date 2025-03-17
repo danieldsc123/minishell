@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:43 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/13 03:05:59 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/17 02:34:28 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	get_redirs_token(char *input, t_token **tokens, int *i)
 		else
 			add_token(tokens, REDIR_OUT, ">");
 	}
-	(*i)++;
 }

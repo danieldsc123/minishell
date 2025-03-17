@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:20:00 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/15 23:53:50 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/16 21:24:12 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,6 @@ void	free_env(t_env *env)
 		env = temp;
 	}
 }
-
-// void	free_env(t_env *env)
-// {
-// 	t_env	*temp;
-
-// 	while (env)
-// 	{
-// 		temp = env->next;
-// 		free(env->name);
-// 		env->name = NULL;
-// 		free(env->value);
-// 		env->value = NULL;
-// 		free(env);
-// 		env = temp;
-// 	}
-// 	env = NULL;
-// }
 
 // Adiciona uma variável de ambiente à lista
 void	add_env_var(t_env **env_list, char *env_str)

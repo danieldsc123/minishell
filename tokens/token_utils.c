@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:18:17 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/11 19:21:28 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/17 02:26:11 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ void	set_operator_type(t_token **tokens)
 	{
 		if (ft_strcmp(current->value, "|") == 0)
 			current->type = PIPE;
+		else if (ft_strcmp(current->value, "<<") == 0)
+		current->type = HEREDOC;
+		else if (ft_strcmp(current->value, ">>") == 0)
+		current->type = APPEND;
 		else if (ft_strcmp(current->value, "<") == 0)
 			current->type = REDIR_IN;
 		else if (ft_strcmp(current->value, ">") == 0)
 			current->type = REDIR_OUT;
-		else if (ft_strcmp(current->value, "<<") == 0)
-			current->type = HEREDOC;
-		else if (ft_strcmp(current->value, ">>") == 0)
-			current->type = APPEND;
 		current = current->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:50:27 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/16 00:17:51 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/17 02:46:51 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,24 @@ t_bool	check_op_op(t_token *tokens)
 {
 	while (tokens && tokens->next)
 	{
-		if ((tokens->type >= PIPE && tokens->type <= APPEND)
+		if ((tokens->type > PIPE && tokens->type <= APPEND)
 			&& (tokens->next->type >= PIPE && tokens->next->type <= APPEND))
 		{
 			printf("Erro de sintaxe: operadores consecutivos inválidos\n");
 			return (TRUE);
 		}
+		else if ((tokens->type == PIPE)
+			&& (tokens->next->type == PIPE))
+		{
+			printf("Erro de sintaxe: operadores consecutivos inválidos\n");
+			return (TRUE);
+		}
 		tokens = tokens->next;
+	}
+	if (tokens && (tokens->type >= PIPE && tokens->type <= APPEND))
+	{
+		printf("Erro de sintaxe: operador no final da linha\n");
+		return (TRUE);
 	}
 	return (FALSE);
 }
