@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:07:33 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/15 01:22:11 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:13:30 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,3 @@ void	free_args(char **args)
 	}
 	free(args);
 }
-
-// void	free_env_vars(t_env *env)
-// {
-// 	t_env	*tmp;
-
-// 	while (env)
-// 	{
-// 		tmp = env;
-// 		free(tmp->key);
-// 		free(tmp->value);
-// 		free(tmp);
-// 		env = env->next;
-// 	}
-// }

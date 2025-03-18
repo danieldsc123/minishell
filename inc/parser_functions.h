@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_functions.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 19:18:18 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/13 21:44:31 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/18 01:22:57 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	cmd_add_back(t_cmd **cmds, t_cmd *new_cmd);
 void	print_cmds(t_cmd *cmds);
 char	**get_args(t_token **tokens);
 void	free_args(char **args);
-// void	free_env_vars(t_env *env);
 
 // Verificações de erro
 int		parse_has_errors(t_token *tokens);

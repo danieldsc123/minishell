@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 01:20:00 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/16 21:24:12 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:16:45 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,19 @@ t_env	*init_env(void)
 }
 
 // Libera toda a memória alocada para a lista de variáveis de ambiente
-void	free_env(t_env *env)
+void	free_env(t_env **env)
 {
 	t_env	*temp;
 
-	while (env)
+	while (*env)
 	{
-		temp = env->next;
-		if (env->name)
-			free(env->name);
-		if (env->value)
-			free(env->value);
-		free(env);
-		env = temp;
+		temp = (*env)->next;
+		free((*env)->name);
+		free((*env)->value);
+		free(*env);
+		*env = temp;
 	}
+	*env = NULL;
 }
 
 // Adiciona uma variável de ambiente à lista

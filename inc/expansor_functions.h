@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 01:02:51 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/15 00:49:48 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:05:10 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*expand_loop(t_expander *exp);
 char	*ft_strjoin_three(char *s1, char *s2, char *s3);
 char	*expand_input(char *input, t_env *env);
 t_env	*init_env(void);
-void	free_env(t_env *env);
+void	free_env(t_env **env);
 void	add_env_var(t_env **env_list, char *env_str);
 
 #endif

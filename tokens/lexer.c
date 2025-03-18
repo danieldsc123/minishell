@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:17:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/16 00:06:12 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/17 23:57:26 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,4 @@ t_token	*lexer(char *input)
 	}
 	remove_quotes_from_tokens(head);
 	return (head);
-}
-
-// Função geral que chama todas as verificações
-t_bool	check_syntax_errors(t_token *tokens, char *input)
-{
-	if (check_start_pipe(tokens) || check_op_op(tokens)
-		|| check_end_op(tokens) || forbiden_token(tokens)
-		|| check_close_quotes(input))
-		return (TRUE);
-	return (FALSE);
 }

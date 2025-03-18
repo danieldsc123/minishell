@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 19:55:50 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/11 19:58:12 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/17 23:33:25 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	skip_quotes(char *input, int *i)
 		(*i)++;
 }
 
-//Contar aspas não fechadas na string de entrada.
+//Conta aspas não fechadas na string de entrada.
 t_bool	has_unclosed_quotes(char *input)
 {
 	int		i;
