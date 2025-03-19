@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:00:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/18 23:24:50 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/19 02:11:24 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+// # include <readline/readline.h>
+// # include <readline/history.h>
+# include <errno.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -36,6 +37,9 @@
 
 # include "expansor_struct.h"
 # include "expansor_functions.h"
+
+# include "exec_functions.h"
+# include "exec_struct.h"
 
 # include "functions_loop_minishel.h"
 
