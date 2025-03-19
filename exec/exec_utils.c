@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_utils.c                                       :+:      :+:    :+:   */
+/*   exec_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 01:38:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 03:24:05 by daniel-da        ###   ########.fr       */
+/*   Created: 2025/03/19 05:19:53 by daniel-da         #+#    #+#             */
+/*   Updated: 2025/03/19 05:58:50 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+//Funções auxiliares para execução
 
-//Busca o caminho do executável com base na variável de ambiente PATH
+// Encontra caminho do executável.
+char	*find_executable(const char *command)
+{
+}
+
+//Obtém $PATH da env.
 char	*get_path_from_env(char **env)
 {
 }
 
-//Divide o valor de PATH em diretórios individuais.
-void	split_path(char *path)
+// Divide o $PATH em diretórios.
+char	**split_path(char *path)
+{
+}
+
+// Libera memória alocada.
+void	free_split(char **arr)
 {
 }

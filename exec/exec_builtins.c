@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 01:39:12 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 03:11:28 by daniel-da        ###   ########.fr       */
+/*   Created: 2025/03/19 01:38:27 by daniel-da         #+#    #+#             */
+/*   Updated: 2025/03/19 05:41:23 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+//Execução de builtins
 
-//Libera a memória alocada por split().
-void	free_split(char **arr)
+//Verifica se é builtin e executa.
+void	exec_builtins(t_cmd *cmd)
 {
 }
 
-//Exibe uma mensagem de erro apropriada.
-void	handle_error(const char *msg)
+// Implementação do cd.
+void	cd(char **args)
+{
+}
+
+// Implementação do pwd.
+void	pwd(int fd)
+{
+}
+
+// Implementação do echo.
+void	echo(char **args, int fd)
+{
+}
+
+// Implementação do exit
+void	exit_shell(char **args)
 {
 }

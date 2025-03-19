@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_command.c                                     :+:      :+:    :+:   */
+/*   fork_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 01:37:26 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 03:15:06 by daniel-da        ###   ########.fr       */
+/*   Created: 2025/03/19 05:22:06 by daniel-da         #+#    #+#             */
+/*   Updated: 2025/03/19 06:03:34 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Função para executar o comando
-void	execute_command(t_command *cmd)
+// Funções auxiliares para fork e processos
+
+// Cria um processo filho e executa um comando.
+int	handle_fork(t_cmd *cmd)
 {
 }
 
-//Vai encontrar o caminho completo do comando executável, buscando no PATH.
-char	find_executable(const char *cmd)
+// Define sinais para processos filhos.
+void	execution_signals(int fork_pid)
 {
 }
 
-//Função responsável por executar os comandos internos (echo, cd, pwd, etc.).
-void	execute_builtin(t_command *cmd)
+//Espera processos filhos terminarem.
+void	wait_child(t_cmd *cmd_table, int cmd_number)
 {
 }
