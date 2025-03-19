@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:06:46 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/18 01:31:06 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/18 23:17:31 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,38 +55,6 @@ t_cmd	*parse_tokens(t_token *tokens)
 	}
 	return (cmds);
 }
-
-// t_cmd	*parse_tokens(t_token *tokens)
-// {
-// 	t_cmd		*cmds;
-// 	t_cmd		*new_cmd;
-// 	char		**args;
-// 	int			is_pipe;
-// 	int			is_redir;
-
-// 	cmds = NULL;
-// 	if (parse_has_errors(tokens))
-// 		return (NULL);
-// 	while (tokens)
-// 	{
-// 		args = get_args(&tokens);
-// 		if (!args)
-// 			continue ;
-// 		is_pipe = (tokens && tokens->type == PIPE);
-// 		is_redir = (tokens && (tokens->type == REDIR_IN
-// 					|| tokens->type == REDIR_OUT));
-// 		new_cmd = cmd_new(args, is_pipe, is_redir);
-// 		if (!new_cmd)
-// 		{
-// 			free_args(args);
-// 			continue ;
-// 		}
-// 		cmd_add_back(&cmds, new_cmd);
-// 		if (tokens)
-// 			tokens = tokens->next;
-// 	}
-// 	return (cmds);
-// }
 
 // Conta quantos argumentos existem antes de um pipe ou redirecionamento
 static int	count_args(t_token *tokens)

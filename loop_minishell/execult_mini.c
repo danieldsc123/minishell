@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   execult_mini.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/18 02:04:06 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/19 00:30:55 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	print_cmds(t_cmd *cmds)
+{
+	int	i;
+
+	while (cmds)
+	{
+		printf("Command: ");
+		i = 0;
+		while (cmds->args && cmds->args[i])
+		{
+			printf("%s ", cmds->args[i]);
+			i++;
+		}
+		printf("\nIs Pipe: %d, Is Redir: %d\n", cmds->is_pipe, cmds->is_redir);
+		cmds = cmds->next;
+	}
+}
 
 void	process_input(char *input, t_env *env)
 {
