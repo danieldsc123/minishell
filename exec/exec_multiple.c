@@ -6,15 +6,17 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:35:55 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 23:23:46 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/20 19:06:30 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 //AUXILIAR
-void	setup_child_process(t_exec_cmd *cmd, int prev_fd, int *pipes, int last)
+void	setup_child_process(t_exec_cmd *cmd, int prev_fd, int *pipes)
 {
+	int	last;
+
 	if (prev_fd != -1)
 	{
 		dup2(prev_fd, STDIN_FILENO);
