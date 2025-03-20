@@ -6,7 +6,7 @@
 #    By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/19 22:36:54 by daniel-da        ###   ########.fr        #
+#    Updated: 2025/03/20 00:23:29 by daniel-da        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS = \
 	exec/exec_multiple.c \
 	exec/exec_signals.c \
 	exec/exec_status.c \
+	exec/loop_exec.c \
 	loop_minishell/execult_mini.c \
 
 OBJS = $(SRCS:.c=.o)

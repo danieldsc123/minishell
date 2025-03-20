@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 00:30:55 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/20 00:30:02 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	process_input(char *input, t_env *env)
 	print_tokens(tokens);
 	cmds = parse_tokens(tokens);
 	if (cmds)
+	{
 		print_cmds(cmds);
+		setup_minishell_execution(cmds);
+	}
 	free_cmd_list(cmds);
 	free_tokens(tokens);
 	free(input);
@@ -65,8 +68,8 @@ void	execute_minishell(t_env *env)
 		if (!input)
 			break ;
 		process_input(input, env);
-		free_env(&env);
-		clear_history();
-		rl_clear_history();
 	}
+	free_env(&env);
+	clear_history();
+	rl_clear_history();
 }
