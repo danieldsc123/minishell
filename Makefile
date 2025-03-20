@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/13 20:54:28 by daniel-da        ###   ########.fr        #
+#    Updated: 2025/03/19 22:36:54 by daniel-da        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,12 @@ SRCS = \
 	expansor/expander.c \
 	expansor/remove_quotes.c \
 	expansor/utils.c \
+	exec/exec_single.c \
+	exec/check_redirects.c \
+	exec/exec_builtins.c \
+	exec/exec_multiple.c \
+	exec/exec_signals.c \
+	exec/exec_status.c \
 	loop_minishell/execult_mini.c \
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:00:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/19 06:11:20 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/19 21:41:07 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <sys/stat.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-// # include <readline/readline.h>
-// # include <readline/history.h>
 # include <errno.h>
 
 # include <readline/readline.h>

@@ -6,34 +6,29 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:38:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 05:41:23 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/19 23:18:15 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 //Execução de builtins
 
-//Verifica se é builtin e executa.
-void	exec_builtins(t_cmd *cmd)
+//verifica se o comando recebido é um built-in (um comando interno do shell)
+// se for, executa a função correspondente.
+void	exec_builtin(t_exec_cmd *cmd)
 {
-}
-
-// Implementação do cd.
-void	cd(char **args)
-{
-}
-
-// Implementação do pwd.
-void	pwd(int fd)
-{
-}
-
-// Implementação do echo.
-void	echo(char **args, int fd)
-{
-}
-
-// Implementação do exit
-void	exit_shell(char **args)
-{
+	if (ft_strcmp(cmd->cmd, "cd") == 0)
+		ft_cd(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "pwd") == 0)
+		ft_pwd(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "echo") == 0)
+		ft_echo(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "export") == 0)
+		ft_export(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "unset") == 0)
+		ft_unset(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "env") == 0)
+		ft_env(cmd->args);
+	else if (ft_strcmp(cmd->cmd, "exit") == 0)
+		ft_exit(cmd->args);
 }

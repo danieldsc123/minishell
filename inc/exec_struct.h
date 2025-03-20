@@ -6,30 +6,30 @@
 /*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:41:38 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 06:10:38 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/19 22:50:46 by daniel-da        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXEC_STRUCT_H
 # define EXEC_STRUCT_H
 
-typedef struct s_redir
+typedef struct s_exec_cmd
 {
-	int				fd;// File descriptor para redirecionamento
-	char			*filename;// Nome do arquivo redirecionado
-	struct s_redir	*next;// Próximo redirecionamento (caso haja)
-}	t_redir;
+	char	**args;
+	char	*cmd;
+	char	**envp;
+	int		is_builtin;
+	int		fd_in;
+	int		fd_out;
+	pid_t	pid;
+}	t_exec_cmd;
 
-typedef struct s_cmd
+// Estrutura global para armazenar estado do shell
+typedef struct s_core
 {
-	char	*cmd;// Nome do comando
-	char	**args;// Argumentos do comando
-	char	**envp;// Variáveis de ambiente
-	t_redir	*redir_in;// Redirecionamento de entrada (<)
-	t_redir	*redir_out;// Redirecionamento de saída (>, >>)
-	pid_t	fork_pid;// ID do processo filho
-	int		is_builtin;// Flag para indicar se é um builtin
-	int		index;// Índice do comando na pipeline
-}	t_cmd;
+	int	exit_status;
+}	t_core;
+
+t_core	*get_core(void);
 
 #endif
