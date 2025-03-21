@@ -20,6 +20,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <errno.h>
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <readline/readline.h>
@@ -38,6 +39,8 @@
 # include "expansor_functions.h"
 
 # include "functions_loop_minishel.h"
+
+# include "builtins.h"
 
 // struct minishell
 // {

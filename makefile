@@ -35,6 +35,10 @@ SRCS = \
 	expansor/remove_quotes.c \
 	expansor/utils.c \
 	loop_minishell/execult_mini.c \
+	builtins/ft_cd.c builtins/ft_echo.c \
+	builtins/ft_env.c builtins/ft_exit.c builtins/ft_export.c \
+	builtins/ft_pwd.c builtins/ft_unset.c \
+	env/env_utils.c env/env_operations.c
 
 OBJS = $(SRCS:.c=.o)
 
