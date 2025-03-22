@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_struct.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:41:38 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/19 22:50:46 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/22 00:08:02 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_exec_cmd
 	int		is_builtin;
 	int		fd_in;
 	int		fd_out;
+	int		status;
 	pid_t	pid;
 }	t_exec_cmd;
 

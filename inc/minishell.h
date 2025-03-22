@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:00:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/19 21:41:07 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/22 00:29:08 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # include "expansor_struct.h"
 # include "expansor_functions.h"
 
-# include "exec_functions.h"
 # include "exec_struct.h"
+# include "exec_functions.h"
 
 # include "functions_loop_minishel.h"
 

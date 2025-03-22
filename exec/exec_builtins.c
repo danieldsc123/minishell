@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:38:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/20 00:13:38 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/21 23:51:07 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 //Execução de builtins
 
-//verifica se o comando recebido é um built-in (um comando interno do shell)
-// se for, executa a função correspondente.
+// Executa builtins
 void	exec_builtin(t_exec_cmd *cmd)
 {
 	if (ft_strcmp(cmd->cmd, "cd") == 0)
@@ -31,4 +30,15 @@ void	exec_builtin(t_exec_cmd *cmd)
 		ft_env(cmd->args);
 	else if (ft_strcmp(cmd->cmd, "exit") == 0)
 		ft_exit(cmd->args);
+}
+
+// Verifica se é um builtin
+int	is_builtin(char *cmd)
+{
+	if (!cmd)
+		return (0);
+	return (!ft_strcmp(cmd, "echo") || !ft_strcmp(cmd, "cd")
+		|| !ft_strcmp(cmd, "pwd") || !ft_strcmp(cmd, "export")
+		|| !ft_strcmp(cmd, "unset") || !ft_strcmp(cmd, "env")
+		|| !ft_strcmp(cmd, "exit"));
 }
