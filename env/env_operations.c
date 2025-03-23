@@ -11,24 +11,30 @@ char	*ft_getenv(const char *name, t_env *env)
 	return (NULL);
 }
 
-void	ft_setenv(const char *name, const char *value, t_env *env)
+void    ft_setenv(const char *name, const char *value, t_env *env)
 {
-	t_env	*current;
-	t_env	*new;
+    t_env    *current;
+    t_env    *new;
 
-	current = env;
-	while (current)
-	{
-		if (ft_strcmp(current->name, (char *)name) == 0)
-		{
-			free(current->value);
-			current->value = ft_strdup((char *)value);
-			return ;
-		}
-		current = current->next;
-	}
-	new = ft_env_new(ft_strdup((char *)name), ft_strdup((char *)value));
-	ft_env_add_back(&env, new);
+    current = env;
+    while (current)
+    {
+        if (ft_strcmp(current->name, (char *)name) == 0)
+        {
+            if (current->value)
+                free(current->value);
+            if (value)
+                current->value = ft_strdup((char *)value);
+            else
+                current->value = NULL;
+            return ;
+        }
+        current = current->next;
+    }
+    new = ft_env_new((char *)name, (char *)value);
+    if (!new)
+        return ;
+    ft_env_add_back(&env, new);
 }
 
 void	ft_unsetenv(const char *name, t_env *env)

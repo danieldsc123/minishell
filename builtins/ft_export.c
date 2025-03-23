@@ -65,7 +65,8 @@ int	ft_export(char **args, t_env *env)
 			value = ft_get_value(args[i]);
 			ft_setenv(key, value, env);
 			free(key);
-			free(value);
+            if (value)
+                free(value);
 		}
 		i++;
 	}

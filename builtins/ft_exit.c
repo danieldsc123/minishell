@@ -37,5 +37,6 @@ void	ft_exit(char **args, t_env *env)
 	}
 	status = ft_atoi(args[1]);
 	(void)env;
+	ft_env_clear(&env);
 	exit(status % 256);
 }
