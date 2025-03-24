@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_operations.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/23 23:29:33 by danielda          #+#    #+#             */
+/*   Updated: 2025/03/23 23:31:56 by danielda         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*ft_getenv(const char *name, t_env *env)
@@ -11,16 +23,16 @@ char	*ft_getenv(const char *name, t_env *env)
 	return (NULL);
 }
 
-void    ft_setenv(const char *name, const char *value, t_env *env)
+void	ft_setenv(const char *name, const char *value, t_env *env)
 {
-    t_env    *current;
-    t_env    *new;
+	t_env	*current;
+	t_env	*new;
 
-    current = env;
-    while (current)
-    {
-        if (ft_strcmp(current->name, (char *)name) == 0)
-        {
+	current = env;
+	while (current)
+	{
+	if (ft_strcmp(current->name, (char *)name) == 0)
+	{
             if (current->value)
                 free(current->value);
             if (value)
@@ -28,12 +40,12 @@ void    ft_setenv(const char *name, const char *value, t_env *env)
             else
                 current->value = NULL;
             return ;
-        }
-        current = current->next;
-    }
-    new = ft_env_new((char *)name, (char *)value);
-    if (!new)
-        return ;
+	}
+	current = current->next;
+	}
+	new = ft_env_new((char *)name, (char *)value);
+	if (!new)
+	return ;
     ft_env_add_back(&env, new);
 }
 

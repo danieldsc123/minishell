@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 19:03:45 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/19 00:34:07 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/23 23:45:10 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test_builtins(t_env *env)
 	printf("\n=== Testando echo ===\n");
 	ft_echo(echo_args);
 	ft_echo(echo_n_args);
-
+	
 	printf("\n=== Testando pwd ===\n");
 	ft_pwd();
 
@@ -63,14 +63,12 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-
 	env = ft_env_init(envp);
 	if (!env)
 	{
 		ft_putendl_fd("Failed to initialize environment", 2);
 		return (1);
 	}
-
 	test_builtins(env);
 	ft_env_clear(&env);
 	return (0);
