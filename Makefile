@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/22 00:30:56 by danielda         ###   ########.fr        #
+#    Updated: 2025/03/23 21:29:00 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ SRCS = \
 	exec/exec_signals.c \
 	exec/exec_status.c \
 	exec/loop_exec.c \
-	loop_minishell/execult_mini.c \
+	loop_minishell/execult_mini.c
 
 OBJS = $(SRCS:.c=.o)
 

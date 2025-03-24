@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 00:22:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/22 00:17:05 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:32:26 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	count_commands(t_cmd *cmds)
 	return (count);
 }
 
-// Converte a lista de comandos (t_cmd) para uma estrutura t_exec_cmd para execução.
+//Converte lista de comandos(t_cmd) para uma estrutura t_exec_cmd para execução.
 t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
 {
 	t_exec_cmd	*exec_cmds;

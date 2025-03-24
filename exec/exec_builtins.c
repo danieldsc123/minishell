@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 01:38:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/21 23:51:07 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:38:02 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	exec_builtin(t_exec_cmd *cmd)
 	else if (ft_strcmp(cmd->cmd, "env") == 0)
 		ft_env(cmd->args);
 	else if (ft_strcmp(cmd->cmd, "exit") == 0)
-		ft_exit(cmd->args);
+		ft_exit(ft_atoi(cmd->args[1]));
 }
 
 // Verifica se é um builtin
