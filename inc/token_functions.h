@@ -25,7 +25,7 @@ void	skip_quotes(char *input, int *i);
 t_bool	has_unclosed_quotes(char *input);
 char	*remove_quotes(char *str);
 void	remove_quotes_from_tokens(t_token *tokens);
-int		main(void);
+// int		main(void);
 
 // Verificações de erro
 t_bool	check_start_pipe(t_token *tokens);

@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 21:00:51 by danielda          #+#    #+#             */
-/*   Updated: 2025/03/22 00:29:08 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/25 19:27:57 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # include "exec_functions.h"
 
 # include "functions_loop_minishel.h"
+
+# include "builtins.h"
 
 // struct minishell
 // {

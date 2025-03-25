@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/23 21:29:00 by danielda         ###   ########.fr        #
+#    Updated: 2025/03/25 19:26:31 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,19 +29,19 @@ SRCS = \
     parser/parser_utils.c \
     parser/parser.c \
     parser/syntax_error_p.c \
-	expansor/exp_utils.c \
-	expansor/expand_env.c \
-	expansor/expander.c \
-	expansor/remove_quotes.c \
-	expansor/utils.c \
-	exec/exec_single.c \
-	exec/check_redirects.c \
-	exec/exec_builtins.c \
-	exec/exec_multiple.c \
-	exec/exec_signals.c \
-	exec/exec_status.c \
-	exec/loop_exec.c \
-	loop_minishell/execult_mini.c
+    expansor/exp_utils.c \
+    expansor/expand_env.c \
+    expansor/expander.c \
+    expansor/remove_quotes.c \
+    expansor/utils.c \
+    exec/exec_single.c \
+    exec/check_redirects.c \
+    exec/exec_builtins.c \
+    exec/exec_multiple.c \
+    exec/exec_signals.c \
+    exec/exec_status.c \
+    exec/loop_exec.c \
+    loop_minishell/execult_mini.c
 
 OBJS = $(SRCS:.c=.o)
 
