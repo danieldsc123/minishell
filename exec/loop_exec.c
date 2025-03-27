@@ -6,7 +6,7 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 00:22:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/23 21:32:26 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/27 04:00:52 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,73 @@ t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
 	i = 0;
 	while (cmds)
 	{
-		exec_cmds[i].cmd = cmds->args[0];
+		exec_cmds[i].cmd = ft_strdup(cmds->args[0]);
 		exec_cmds[i].args = cmds->args;
 		exec_cmds[i].envp = envp;
 		exec_cmds[i].is_builtin = is_builtin(exec_cmds[i].cmd);
-		exec_cmds[i].fd_in = 0;
-		exec_cmds[i].fd_out = 1;
+		exec_cmds[i].fd_in = -1;
+		exec_cmds[i].fd_out = -1;
 		exec_cmds[i].status = 0;
 		i++;
 		cmds = cmds->next;
 	}
 	return (exec_cmds);
 }
+
+// t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
+// {
+// 	t_exec_cmd	*exec_cmds;
+// 	int			count;
+// 	int			i;
+
+// 	count = count_commands(cmds);
+// 	exec_cmds = malloc(sizeof(t_exec_cmd) * count);
+// 	if (!exec_cmds)
+// 		return (NULL);
+// 	i = 0;
+// 	while (cmds)
+// 	{
+// 		exec_cmds[i].cmd = cmds->args[0];
+// 		exec_cmds[i].args = cmds->args;
+// 		exec_cmds[i].envp = envp;
+// 		exec_cmds[i].is_builtin = is_builtin(exec_cmds[i].cmd);
+// 		exec_cmds[i].fd_in = 0;
+// 		exec_cmds[i].fd_out = 1;
+// 		exec_cmds[i].status = 0;
+// 		i++;
+// 		cmds = cmds->next;
+// 	}
+// 	return (exec_cmds);
+// }
+
+// Libera a memória alocada para os comandos executáveis.
+void	free_exec_cmds(t_exec_cmd *exec_cmds, int cmd_count)
+{
+	int	i;
+
+	i = 0;
+	while (i < cmd_count)
+	{
+		if (exec_cmds[i].cmd)
+			free(exec_cmds[i].cmd);
+		i++;
+	}
+	free(exec_cmds);
+}
+
+// void	free_exec_cmds(t_exec_cmd *exec_cmds, int cmd_count)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < cmd_count)
+// 	{
+// 		free(exec_cmds[i].cmd);
+// 		free(exec_cmds[i].args);
+// 		i++;
+// 	}
+// 	free(exec_cmds);
+// }
 
 // t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
 // {
@@ -107,18 +162,3 @@ t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
 // 	}
 // 	return (exec_cmds);
 // }
-
-// Libera a memória alocada para os comandos executáveis.
-void	free_exec_cmds(t_exec_cmd *exec_cmds, int cmd_count)
-{
-	int	i;
-
-	i = 0;
-	while (i < cmd_count)
-	{
-		free(exec_cmds[i].cmd);
-		free(exec_cmds[i].args);
-		i++;
-	}
-	free(exec_cmds);
-}

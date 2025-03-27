@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_single.c                                      :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 21:46:22 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/27 03:59:37 by danielda         ###   ########.fr       */
+/*   Created: 2025/03/23 23:28:53 by danielda          #+#    #+#             */
+/*   Updated: 2025/03/27 01:53:32 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Executa um comando único (builtin ou externo)
-void	exec_single(t_exec_cmd *cmd)
+int	ft_pwd(void)
 {
-	if (cmd->is_builtin)
+	char	cwd[4096];
+
+	if (getcwd(cwd, 4096))
 	{
-		exec_builtin(cmd);
-		return ;
+		ft_putendl_fd(cwd, STDOUT_FILENO);
+		return (0);
 	}
-	cmd->pid = fork();
-	if (cmd->pid == 0)
-	{
-		check_redirects(cmd);
-		execve(cmd->cmd, cmd->args, cmd->envp);
-		perror("execve");
-		exit(127);
-	}
-	waitpid(cmd->pid, &cmd->status, 0);
-	update_exit_status(cmd->status);
+	ft_putstr_fd("minishell: pwd: ", 2);
+	ft_putendl_fd(strerror(errno), 2);
+	return (1);
 }

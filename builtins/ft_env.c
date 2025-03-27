@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_single.c                                      :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 21:46:22 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/27 03:59:37 by danielda         ###   ########.fr       */
+/*   Created: 2025/03/23 23:27:44 by danielda          #+#    #+#             */
+/*   Updated: 2025/03/23 23:28:04 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-// Executa um comando único (builtin ou externo)
-void	exec_single(t_exec_cmd *cmd)
+int	ft_env(t_env *env)
 {
-	if (cmd->is_builtin)
+	t_env	*current;
+
+	current = env;
+	while (current)
 	{
-		exec_builtin(cmd);
-		return ;
+		if (current->value)
+		{
+			ft_putstr_fd(current->name, STDOUT_FILENO);
+			ft_putchar_fd('=', STDOUT_FILENO);
+			ft_putendl_fd(current->value, STDOUT_FILENO);
+		}
+		current = current->next;
 	}
-	cmd->pid = fork();
-	if (cmd->pid == 0)
-	{
-		check_redirects(cmd);
-		execve(cmd->cmd, cmd->args, cmd->envp);
-		perror("execve");
-		exit(127);
-	}
-	waitpid(cmd->pid, &cmd->status, 0);
-	update_exit_status(cmd->status);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: danielda <danielda@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/22 18:58:16 by danielda          #+#    #+#              #
-#    Updated: 2025/03/23 21:29:00 by danielda         ###   ########.fr        #
+#    Updated: 2025/03/27 00:51:16 by danielda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,16 @@ SRCS = \
 	exec/exec_signals.c \
 	exec/exec_status.c \
 	exec/loop_exec.c \
-	loop_minishell/execult_mini.c
+	builtins/ft_cd.c \
+	builtins/ft_echo.c \
+	builtins/ft_env.c \
+	builtins/ft_exit.c \
+	builtins/ft_export.c \
+	builtins/ft_pwd.c \
+	builtins/ft_unset.c \
+	env/env_operations.c \
+	env/env_utils.c \
+	loop_minishell/execult_mini.c \
 
 OBJS = $(SRCS:.c=.o)
 
