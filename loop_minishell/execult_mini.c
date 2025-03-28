@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execult_mini.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-da <daniel-da@student.42.fr>        +#+  +:+       +#+        */
+/*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:27:04 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/20 00:30:02 by daniel-da        ###   ########.fr       */
+/*   Updated: 2025/03/27 22:45:37 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// Imprime a lista de comandos e seus argumentos
 void	print_cmds(t_cmd *cmds)
 {
 	int	i;
@@ -30,6 +31,7 @@ void	print_cmds(t_cmd *cmds)
 	}
 }
 
+//Processa a entrada do usuário: expande variáveis
 void	process_input(char *input, t_env *env)
 {
 	t_token	*tokens;
@@ -51,13 +53,14 @@ void	process_input(char *input, t_env *env)
 	if (cmds)
 	{
 		print_cmds(cmds);
-		setup_minishell_execution(cmds);
+		setup_minishell_execution(cmds, env);
 	}
 	free_cmd_list(cmds);
 	free_tokens(tokens);
 	free(input);
 }
 
+// Loop principal do Minishell que lê comandos do usuário
 void	execute_minishell(t_env *env)
 {
 	char	*input;

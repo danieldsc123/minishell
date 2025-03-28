@@ -6,23 +6,23 @@
 /*   By: danielda <danielda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 00:22:27 by daniel-da         #+#    #+#             */
-/*   Updated: 2025/03/27 04:00:52 by danielda         ###   ########.fr       */
+/*   Updated: 2025/03/27 22:50:56 by danielda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 // Executa um ou múltiplos comandos, dependendo da quantidade de comandos.
-void	execute_command(t_exec_cmd *cmds, int cmd_count)
+void	execute_command(t_exec_cmd *cmds, int cmd_count, t_env *env)
 {
 	if (cmd_count == 1)
-		exec_single(cmds);
+		exec_single(cmds, env);
 	else
 		exec_multiple(cmd_count, cmds);
 }
 
 // Configura e inicia a execução dos comandos do Minishell.
-void	setup_minishell_execution(t_cmd *cmds)
+void	setup_minishell_execution(t_cmd *cmds, t_env *env)
 {
 	t_exec_cmd	*exec_cmds;
 	int			cmd_count;
@@ -32,11 +32,11 @@ void	setup_minishell_execution(t_cmd *cmds)
 	if (!envp)
 		return ;
 	cmd_count = count_commands(cmds);
-	exec_cmds = convert_to_exec_cmds(cmds, envp);
+	exec_cmds = convert_to_exec_cmds(cmds, &envp);
 	if (!exec_cmds)
 		return ;
 	handle_signals();
-	execute_command(exec_cmds, cmd_count);
+	execute_command(exec_cmds, cmd_count, env);
 	update_exit_status(exec_cmds[cmd_count - 1].status);
 	free_exec_cmds(exec_cmds, cmd_count);
 }
@@ -56,7 +56,7 @@ int	count_commands(t_cmd *cmds)
 }
 
 //Converte lista de comandos(t_cmd) para uma estrutura t_exec_cmd para execução.
-t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env *envp)
+t_exec_cmd	*convert_to_exec_cmds(t_cmd *cmds, t_env **envp)
 {
 	t_exec_cmd	*exec_cmds;
 	int			count;
